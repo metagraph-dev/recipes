@@ -58,4 +58,4 @@ jobs:
           ls -la ./artifact_storage
           UPLOAD=`ls ./artifact_storage | head -1`
           echo "Uploading $UPLOAD"
-          $CONDA/bin/anaconda -t ${{ secrets.ANACONDA_ORG_TOKEN }} upload -u metagraph --no-progress --force --no-register ./artifact_storage/$UPLOAD
+          $CONDA/bin/anaconda -t ${{ secrets.ANACONDA_ORG_TOKEN }} upload -u metagraph --no-progress --force ./artifact_storage/$UPLOAD
