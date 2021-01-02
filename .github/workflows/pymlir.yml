@@ -40,7 +40,7 @@ jobs:
           path: ${{ env.CONDA_BUILD_OUTPUT }}
           retention-days: 7
 
-  dev_upload:
+  upload:
     runs-on: ubuntu-latest
     needs: build
     if: (github.ref == 'refs/heads/main') || contains(github.ref, 'refs/tags/')
@@ -58,4 +58,4 @@ jobs:
           ls -la ./artifact_storage
           UPLOAD=`ls ./artifact_storage | head -1`
           echo "Uploading $UPLOAD"
-          $CONDA/bin/anaconda -t ${{ secrets.ANACONDA_ORG_TOKEN }} upload -u metagraph -l ${{ env.AC_LABEL }} --no-progress --force --no-register ./artifact_storage/$UPLOAD
+          $CONDA/bin/anaconda -t ${{ secrets.ANACONDA_ORG_TOKEN }} upload -u metagraph --no-progress --force --no-register ./artifact_storage/$UPLOAD

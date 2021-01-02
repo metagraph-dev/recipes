@@ -1,5 +1,8 @@
 {% set name = "pymlir" %}
 {% set version = "0.3" %}
+# increment build.number and build.string when this changes
+# pymlir does not tag releases, so we can't use git describe
+# to compute build numbers
 {% set git_hash = "a89f8f" %}
 
 package:
@@ -11,8 +14,9 @@ source:
   git_rev: {{ git_hash }}
 
 build:
-  number: 0
-  string: g{{ git_hash }}_py0
+  # increment this and next line when 
+  number: 1
+  string: g{{ git_hash }}_py_1
   script: "{{ PYTHON }} -m pip install . -vv"
   noarch: python
 
