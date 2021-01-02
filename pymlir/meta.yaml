@@ -1,0 +1,53 @@
+{% set name = "pymlir" %}
+{% set version = "0.3" %}
+{% set git_hash = "a89f8f" %}
+
+package:
+  name: "{{ name|lower }}"
+  version: "{{ version }}"
+
+source:
+  git_url: https://github.com/spcl/pymlir
+  git_rev: {{ git_hash }}
+
+build:
+  number: 0
+  string: g{{ git_hash }}_py0
+  script: "{{ PYTHON }} -m pip install . -vv"
+  noarch: python
+
+requirements:
+  host:
+    - lark-parser
+    - parse
+    - pip
+    - python
+  run:
+    - lark-parser
+    - parse
+    - python
+
+test:
+  imports:
+    - mlir
+    - mlir.dialects
+  requires:
+    - pytest
+    - pytest-cov
+  source_files:
+    - tests
+  commands:
+    - pytest tests
+
+about:
+  home: "https://github.com/spcl/pymlir"
+  license: BSD
+  license_family: BSD
+  license_file: 
+  summary: "Python Interface for the Multi-Level Intermediate Representation (MLIR)"
+  doc_url: 
+  dev_url: 
+
+extra:
+  recipe-maintainers:
+    - seibert
