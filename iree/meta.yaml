@@ -1,0 +1,46 @@
+# conda build -c conda-forge .
+
+{% set name = "iree" %}
+{% set version = "0.0" %}
+
+package:
+  name: "{{ name|lower }}"
+  version: "{{ version }}"
+
+source:
+#  git_rev: snapshot-20210105.14
+#  git_url: https://github.com/google/iree
+#  git_depth: 1
+  path: /tmp/test/iree
+
+build:
+  number: 0
+
+requirements:
+  host:
+    - python=3.7
+  build:
+    - python=3.7
+    - conda-forge::bazel
+    - cmake
+    - clang==10.0.1
+    - clangxx==10.0.1
+    - jupyter
+    - conda-forge::ninja
+    - conda-forge::tensorflow
+  run:
+    - python=3.7
+    - conda-forge::tensorflow
+
+test:
+  imports:
+    - pyiree
+    - pyiree.rt
+    - pyiree.compiler2
+    - pyiree.compiler2.tf
+
+
+about:
+  home: https://github.com/google/iree
+  license: Apache License 2.0
+  summary: Intermediate Representation Execution Environment
