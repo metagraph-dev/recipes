@@ -35,10 +35,6 @@ harden_symlinks () {
 	
 	if ! [[ "$TARGET_DIR" =~ ^$OVERALL_SEARCH_DIR.* ]] # if TARGET_DIR does not start with OVERALL_SEARCH_DIR, i.e. if TARGET_DIR points outside of OVERALL_SEARCH_DIR
 	then
-	    echo # TODO remove this
-	    echo LINK $LINK # TODO remove this
-	    echo TARGET $TARGET
-	    echo TARGET_DIR $TARGET_DIR # TODO remove this	    
             rm $LINK
 	    cp -r $TARGET $LINK
 	    if [[ -d $LINK ]] # newly copied subdirectories can also contain symlinks
