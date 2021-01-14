@@ -13,10 +13,9 @@ python3 configure_bazel.py
 # Compile
 IREE_BUILD_DIR=$(realpath ../iree-build)
 bazel clean --expunge
-# TODO set CONDA_BUILD_SYSROOT in the right place
-env CONDA_BUILD_SYSROOT='' bazel build iree/...
-env CONDA_BUILD_SYSROOT='' cmake -G Ninja -B $IREE_BUILD_DIR -DCMAKE_C_COMPILER=clang -DCMAKE_CXX_COMPILER=clang++ -DIREE_BUILD_PYTHON_BINDINGS=ON -DIREE_BUILD_TENSORFLOW_COMPILER=ON . 
-env CONDA_BUILD_SYSROOT='' cmake --build $IREE_BUILD_DIR
+bazel build iree/...
+cmake -G Ninja -B $IREE_BUILD_DIR -DCMAKE_C_COMPILER=clang -DCMAKE_CXX_COMPILER=clang++ -DIREE_BUILD_PYTHON_BINDINGS=ON -DIREE_BUILD_TENSORFLOW_COMPILER=ON . 
+cmake --build $IREE_BUILD_DIR
 
 # Replace symlinks with hard copies
 harden_symlinks () {
