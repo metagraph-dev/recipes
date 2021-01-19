@@ -19,3 +19,7 @@ cmake --build . --target check-mlir
 # build everything else
 cmake --build .
 cmake --install .
+
+rm -rf $PREFIX/examples
+cp -a bin/llvm-lit $PREFIX/bin/
+

@@ -13,7 +13,7 @@ source:
 
 build:
   number: {{ build_number }}
-  string: g{{ git_hash }}_{{ build_number }}
+  string: py{{ CONDA_PY }}g{{ git_hash }}_{{ build_number }}
 
 requirements:
   build:
