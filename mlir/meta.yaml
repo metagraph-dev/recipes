@@ -1,6 +1,6 @@
 # increment build number when updating hash
-{% set git_hash = "ac2be2b" %}
-{% set build_number = "1" %}
+{% set git_hash = "04c66ed" %}
+{% set build_number = "2" %}
 
 package:
   name: mlir
