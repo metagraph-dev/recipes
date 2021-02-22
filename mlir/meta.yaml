@@ -1,6 +1,6 @@
 # increment build number when updating hash
-{% set git_hash = "3bcca6b" %}
-{% set build_number = "0" %}
+{% set git_hash = "ac2be2b" %}
+{% set build_number = "1" %}
 
 package:
   name: mlir
@@ -13,23 +13,20 @@ source:
 
 build:
   number: {{ build_number }}
-  string: py{{ CONDA_PY }}g{{ git_hash }}_{{ build_number }}
+  string: g{{ git_hash }}_{{ build_number }}
 
 requirements:
-  build:
-    #- {{ compiler('c') }} # [unix]
-    #- {{ compiler('cxx') }} # [unix]
+  host:
     - cmake
     - ninja
-    - python >=3
+    - python
+    - ncurses
+    - zlib
   run:
-    - python >=3
     - zlib
     - ncurses
 
 test:
-  requires:
-    - python
   commands:
     - $PREFIX/bin/mlir-opt --version
 

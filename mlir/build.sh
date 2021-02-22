@@ -22,4 +22,3 @@ cmake --install .
 
 rm -rf $PREFIX/examples
 cp -a bin/llvm-lit $PREFIX/bin/
-
