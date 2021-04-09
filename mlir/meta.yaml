@@ -1,3 +1,5 @@
+# conda build -b .
+
 # increment build number when updating hash
 {% set git_hash = "04c66ed" %}
 {% set build_number = "2" %}
