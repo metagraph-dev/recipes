@@ -1,8 +1,8 @@
 # conda build -b .
 
 # increment build number when updating hash
-{% set git_hash = "04c66ed" %}
-{% set build_number = "2" %}
+{% set git_hash = "e413b86" %}
+{% set build_number = "3" %}
 
 package:
   name: mlir
