@@ -1,8 +1,8 @@
 # conda build -b .
 
 # increment build number when updating hash
-{% set git_hash = "bd0cae6" %}
-{% set build_number = "4" %}
+{% set git_hash = "d51e347" %}
+{% set build_number = "10" %}
 
 package:
   name: mlir
@@ -10,8 +10,8 @@ package:
 
 source:
   git_url: https://github.com/llvm/llvm-project.git
-  git_rev: {{ git_hash }}
-  git_depth: 1
+  git_rev: d51e3474e060cb0e90dc2e2487f778b0d3e6a8de
+#  git_depth: 1
 
 build:
   number: {{ build_number }}
