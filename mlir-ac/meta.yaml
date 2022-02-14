@@ -1,0 +1,41 @@
+# conda build -b .
+
+# increment build number when updating hash
+{% set git_hash = "4e57a19" %}
+{% set build_number = "0" %}
+
+package:
+  name: mlir-ac
+  version: 14.0.0
+
+source:
+  git_url: https://github.com/metagraph-dev/llvm-project.git
+  # sparse_linalg branch: https://github.com/metagraph-dev/llvm-project/tree/sparse_linalg
+  git_rev: 4e57a19388c1df5b38cb085bdd74ff900a5bb184
+#  git_depth: 1
+
+build:
+  number: {{ build_number }}
+  string: g{{ git_hash }}_{{ build_number }}
+
+requirements:
+  host:
+    - cmake
+    - ninja
+    - python
+    - ncurses
+    - zlib
+  run:
+    - zlib
+    - ncurses
+
+test:
+  commands:
+    - $PREFIX/bin/mlir-opt --version
+
+about:
+  home: http://llvm.org/
+  dev_url: https://github.com/llvm-mirror/llvm
+  license: NCSA
+  license_file: mlir/LICENSE.TXT
+  summary: LLVM build for MLIR
